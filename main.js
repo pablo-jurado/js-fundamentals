@@ -37,16 +37,15 @@ and returns true if it is a vowel, false otherwise. */
 
 function isVowel (letter) {
   var arrVowel = ['a', 'e', 'i', 'o', 'u']
-  var isVowel = false
   if (typeof letter !== 'string') {
     return false
   }
   for (var i = 0; i < arrVowel.length; i++) {
     if (arrVowel[i] === letter.toLowerCase()) {
-      isVowel = true
+      return true
     }
   }
-  return isVowel
+  return false
 }
 
 console.assert(isVowel(0) === false)
@@ -63,10 +62,9 @@ reverse("skoob") should return the
 string "books". */
 
 function reverse (str) {
-  var reversed = []
-  var arr = str.split('')
-  for (var i = arr.length - 1; i >= 0; i--) {
-    reversed = reversed + arr[i]
+  var reversed = ''
+  for (var i = str.length - 1; i >= 0; i--) {
+    reversed = reversed + str[i]
   }
   return reversed
 }
@@ -110,10 +108,14 @@ Write a function findLongestWord() that takes a string of words and returns the 
 i.e. findLongestWord("a book full of dogs") should return "book" */
 
 function findLongestWord (str) {
-  var arr = str.split(' ')
+  var arr = str.replace("'", ' ').split(' ')
+  var word = ''
   for (var i = 0; i < arr.length; i++) {
-    console.log(arr[i].length)
+    if (arr[i].length > word.length) {
+      word = arr[i]
+    }
   }
+  return word
 }
 
 console.assert(findLongestWord('a book full of dogs') === 'book')
@@ -125,7 +127,13 @@ write a function that returns the Greatest Common Denominator of two numbers
 - if no GCD exists, return 1 */
 
 function GCD (num1, num2) {
-
+  var result
+  for (var i = 1; i < num1; i++) {
+    if (num1 % i === 0 && num2 % i === 0) {
+      result = i
+    }
+  }
+  return result
 }
 
 console.assert(GCD(5, 1) === 1)
