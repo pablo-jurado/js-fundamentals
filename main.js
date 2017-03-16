@@ -85,19 +85,18 @@ write a function the returns a FizzBuzz string for some number N (counting up fr
 function fizzbuzz (num) {
   var result = ''
   for (var i = 1; i <= num; i++) {
-    if (i % 3 === 0 && i % 5 !== 0) {
+    if (i % 3 !== 0 && i % 5 !== 0) {
+      result = result + '.'
+    } else if (i % 3 === 0 && i % 5 !== 0) {
       result = result + 'fizz'
     } else if (i % 3 !== 0 && i % 5 === 0) {
       result = result + 'buzz'
     } else if (i % 3 === 0 && i % 5 === 0) {
       result = result + 'fizzbuzz'
-    } else if (i % 3 !== 0 || i % 5 !== 0) {
-      result = result + '.'
     }
   }
   return result
 }
-
 
 console.assert(fizzbuzz(1) === '.')
 console.assert(fizzbuzz(2) === '..')
@@ -110,6 +109,13 @@ Part 5 *
 Write a function findLongestWord() that takes a string of words and returns the longest word.
 i.e. findLongestWord("a book full of dogs") should return "book" */
 
+function findLongestWord (str) {
+  var arr = str.split(' ')
+  for (var i = 0; i < arr.length; i++) {
+    console.log(arr[i].length)
+  }
+}
+
 console.assert(findLongestWord('a book full of dogs') === 'book')
 console.assert(findLongestWord("don't mess with Texas") === 'Texas')
 
@@ -117,6 +123,10 @@ console.assert(findLongestWord("don't mess with Texas") === 'Texas')
 PART 6 *
 write a function that returns the Greatest Common Denominator of two numbers
 - if no GCD exists, return 1 */
+
+function GCD (num1, num2) {
+
+}
 
 console.assert(GCD(5, 1) === 1)
 console.assert(GCD(15, 3) === 3)
