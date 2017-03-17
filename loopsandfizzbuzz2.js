@@ -4,9 +4,17 @@
 
 // TODO: Put your function here
 
-// console.assert(squareDance([1, 2])[1] === 4)
-// console.assert(squareDance([5, 10, 15])[2] === 225)
-// console.assert(squareDance([3, 6, 9, 3])[0] === 9)
+function squareDance (arr) {
+  var newArr = []
+  for (var i = 0; i < arr.length; i++) {
+    newArr[i] = arr[i] * arr[i]
+  }
+  return newArr
+}
+
+console.assert(squareDance([1, 2])[1] === 4)
+console.assert(squareDance([5, 10, 15])[2] === 225)
+console.assert(squareDance([3, 6, 9, 3])[0] === 9)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // PART 1
@@ -40,7 +48,8 @@ function capitalizeAll(str) {
   var lowerCaseArr = str.split(' ')
   for (var i = 0; i < lowerCaseArr.length; i++) {
     var firstLetter = lowerCaseArr[i][0].toUpperCase()
-    upperCaseArr[i] = firstLetter + lowerCaseArr[i].slice(1, lowerCaseArr[i].length)
+    var restOfSentence = lowerCaseArr[i].slice(1, lowerCaseArr[i].length)
+    upperCaseArr[i] = firstLetter + restOfSentence
   }
   return upperCaseArr.join(' ')
 }
@@ -55,28 +64,45 @@ console.assert(capitalizeAll('every day is like sunday.') === 'Every Day Is Like
 // with ? and ! and receive a gratifying high five, right on the hand!)
 
 var paragraph = 'it was a fine morning. the wine was good. light slanted in through the cafe window.'
-var paragraph2 = 'what happened here? i don\'t know!'
+var paragraph2 = 'what happened here? i don\'t know! do you?'
 
 // TODO: put your function here
 
+// function properSentences (str) {
+//   var firstLetter = ''
+//   var upperCaseArr = []
+//   var strArr = str.split('.')
+//   for (var i = 0; i < strArr.length - 1; i++) {
+//     if (strArr[i][0] !== ' ') {
+//       firstLetter = strArr[i][0].toUpperCase()
+//       upperCaseArr[i] = firstLetter + strArr[i].slice(1, strArr[i].length) + '.'
+//     } else {
+//       firstLetter = strArr[i][1].toUpperCase()
+//       upperCaseArr[i] = firstLetter + strArr[i].slice(2, strArr[i].length) + '.'
+//     }
+//   }
+//   return upperCaseArr.join(' ')
+// }
+
 function properSentences (str) {
-  var firstLetter
-  var upperCaseArr = []
-  var strArr = str.split('.')
-  for (var i = 0; i < strArr.length - 1; i++) {
-    if (strArr[i][0] !== ' ') {
-      firstLetter = strArr[i][0].toUpperCase()
-      upperCaseArr[i] = firstLetter + strArr[i].slice(1, strArr[i].length) + '.'
+  var newStrArr = []
+  for (var i = 0; i < str.length; i++) {
+    if (i === 0) {
+      newStrArr[0] = str[0].toUpperCase()
+    } else if ((str[i] === '.' || str[i] === '?' || str[i] === '!')
+              && i !== str.length - 1) {
+      newStrArr[i] = str[i]
+      newStrArr[i + 1] = ' ' + str[i + 2].toUpperCase()
+        i = i + 2
     } else {
-      firstLetter = strArr[i][1].toUpperCase()
-      upperCaseArr[i] = firstLetter + strArr[i].slice(2, strArr[i].length) + '.'
+      newStrArr[i] = str[i]
     }
   }
-  return upperCaseArr.join(' ')
+  return newStrArr.join('')
 }
 
 console.assert(properSentences(paragraph) === 'It was a fine morning. The wine was good. Light slanted in through the cafe window.')
-
+console.assert(properSentences(paragraph2) === 'What happened here? I don\'t know! Do you?')
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // PART 4
@@ -115,7 +141,6 @@ function pipeline (input, fun1, fun2) {
 // test 1
 var paragraph = 'mom bring your crappy self in here. i want a dang sandwich.'
 
-console.log(pipeline(paragraph, nicer, properSentences))
 console.assert(pipeline(paragraph, nicer, properSentences) === 'Mom bring your self in here. I want a sandwich.')
 
 // test 2
