@@ -25,8 +25,6 @@ function nicer (str) {
   }
   return strArr.join(" ")
 }
-// console.log(nicer('mom get the heck in here and bring me a darn sandwich.'))
-// console.log(nicer('here son, your crappy sandwich is on the dang plate.'))
 
 console.assert(nicer('mom get the heck in here and bring me a darn sandwich.') === 'mom get the in here and bring me a sandwich.')
 console.assert(nicer('here son, your crappy sandwich is on the dang plate.') === 'here son, your sandwich is on the plate.')
@@ -37,6 +35,15 @@ console.assert(nicer('here son, your crappy sandwich is on the dang plate.') ===
 // and capitalize the first letter of every word in the sentence.
 
 // TODO: put your function here
+function capitalizeAll(str) {
+  var upperCaseArr = []
+  var lowerCaseArr = str.split(' ')
+  for (var i = 0; i < lowerCaseArr.length; i++) {
+    var firstLetter = lowerCaseArr[i][0].toUpperCase()
+    upperCaseArr[i] = firstLetter + lowerCaseArr[i].slice(1, lowerCaseArr[i].length)
+  }
+  return upperCaseArr.join(' ')
+}
 
 console.assert(capitalizeAll('every day is like sunday.') === 'Every Day Is Like Sunday.')
 
