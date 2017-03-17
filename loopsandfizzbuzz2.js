@@ -55,15 +55,44 @@ console.assert(capitalizeAll('every day is like sunday.') === 'Every Day Is Like
 // with ? and ! and receive a gratifying high five, right on the hand!)
 
 var paragraph = 'it was a fine morning. the wine was good. light slanted in through the cafe window.'
+var paragraph2 = 'what happened here? i don\'t know!'
 
 // TODO: put your function here
 
+function properSentences (str) {
+  var firstLetter
+  var upperCaseArr = []
+  var strArr = str.split('.')
+  for (var i = 0; i < strArr.length - 1; i++) {
+    if (strArr[i][0] !== ' ') {
+      firstLetter = strArr[i][0].toUpperCase()
+      upperCaseArr[i] = firstLetter + strArr[i].slice(1, strArr[i].length) + '.'
+    } else {
+      firstLetter = strArr[i][1].toUpperCase()
+      upperCaseArr[i] = firstLetter + strArr[i].slice(2, strArr[i].length) + '.'
+    }
+  }
+  return upperCaseArr.join(' ')
+}
+
 console.assert(properSentences(paragraph) === 'It was a fine morning. The wine was good. Light slanted in through the cafe window.')
+
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // PART 4
 // Write a function called iPutTheFunIn(). It should take a string as input.
 // The output should be a copy of the original string with the word 'fun' inserted into the center of the string.
+
+function iPutTheFunIn (str) {
+  var newStr = ''
+  for (var i = 0; i < str.length; i++) {
+    if (i === (str.length / 2)) {
+      newStr = newStr + 'fun'
+    }
+    newStr = newStr + str[i]
+  }
+ return newStr
+}
 
 console.assert(iPutTheFunIn('funerary') === 'funefunrary')
 console.assert(iPutTheFunIn('reds') === 'refunds')
@@ -77,11 +106,16 @@ console.assert(iPutTheFunIn('reds') === 'refunds')
 
 // TODO: put your function here
 
+function pipeline (input, fun1, fun2) {
+  return fun2(fun1(input))
+}
+
 // THE FOLLOWING THREE TESTS ALL CORRESPOND TO THE `pipeline()` FUNCTION
 
 // test 1
 var paragraph = 'mom bring your crappy self in here. i want a dang sandwich.'
 
+console.log(pipeline(paragraph, nicer, properSentences))
 console.assert(pipeline(paragraph, nicer, properSentences) === 'Mom bring your self in here. I want a sandwich.')
 
 // test 2
