@@ -22,7 +22,7 @@ console.assert(squareDance([3, 6, 9, 3])[0] === 9)
 
 // TODO: put your function here
 function nicer (str) {
-  var strArr = str.split(" ")
+  var strArr = str.split(' ')
   var badWords = ['heck', 'crappy', 'darn', 'dang', 'damn', 'crap', 'awful', 'dumb']
   for (var i = 0; i < strArr.length; i++) {
     for (var j = 0; j < badWords.length; j++) {
@@ -31,7 +31,7 @@ function nicer (str) {
       }
     }
   }
-  return strArr.join(" ")
+  return strArr.join(' ')
 }
 
 console.assert(nicer('mom get the heck in here and bring me a darn sandwich.') === 'mom get the in here and bring me a sandwich.')
@@ -43,7 +43,7 @@ console.assert(nicer('here son, your crappy sandwich is on the dang plate.') ===
 // and capitalize the first letter of every word in the sentence.
 
 // TODO: put your function here
-function capitalizeAll(str) {
+function capitalizeAll (str) {
   var upperCaseArr = []
   var lowerCaseArr = str.split(' ')
   for (var i = 0; i < lowerCaseArr.length; i++) {
@@ -68,32 +68,16 @@ var paragraph2 = 'what happened here? i don\'t know! do you?'
 
 // TODO: put your function here
 
-// function properSentences (str) {
-//   var firstLetter = ''
-//   var upperCaseArr = []
-//   var strArr = str.split('.')
-//   for (var i = 0; i < strArr.length - 1; i++) {
-//     if (strArr[i][0] !== ' ') {
-//       firstLetter = strArr[i][0].toUpperCase()
-//       upperCaseArr[i] = firstLetter + strArr[i].slice(1, strArr[i].length) + '.'
-//     } else {
-//       firstLetter = strArr[i][1].toUpperCase()
-//       upperCaseArr[i] = firstLetter + strArr[i].slice(2, strArr[i].length) + '.'
-//     }
-//   }
-//   return upperCaseArr.join(' ')
-// }
-
 function properSentences (str) {
   var newStrArr = []
   for (var i = 0; i < str.length; i++) {
     if (i === 0) {
       newStrArr[0] = str[0].toUpperCase()
-    } else if ((str[i] === '.' || str[i] === '?' || str[i] === '!')
-              && i !== str.length - 1) {
+    } else if ((str[i] === '.' || str[i] === '?' || str[i] === '!') &&
+              i !== str.length - 1) {
       newStrArr[i] = str[i]
       newStrArr[i + 1] = ' ' + str[i + 2].toUpperCase()
-        i = i + 2
+      i = i + 2
     } else {
       newStrArr[i] = str[i]
     }
@@ -117,7 +101,7 @@ function iPutTheFunIn (str) {
     }
     newStr = newStr + str[i]
   }
- return newStr
+  return newStr
 }
 
 console.assert(iPutTheFunIn('funerary') === 'funefunrary')
@@ -139,9 +123,9 @@ function pipeline (input, fun1, fun2) {
 // THE FOLLOWING THREE TESTS ALL CORRESPOND TO THE `pipeline()` FUNCTION
 
 // test 1
-var paragraph = 'mom bring your crappy self in here. i want a dang sandwich.'
+var paragraph3 = 'mom bring your crappy self in here. i want a dang sandwich.'
 
-console.assert(pipeline(paragraph, nicer, properSentences) === 'Mom bring your self in here. I want a sandwich.')
+console.assert(pipeline(paragraph3, nicer, properSentences) === 'Mom bring your self in here. I want a sandwich.')
 
 // test 2
 function squareNum (n) {
