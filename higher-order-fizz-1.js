@@ -37,17 +37,11 @@ function maxOfArray (arr) {
   }
 }
 
-console.log(maxOfArray([2, 4, 3]) === 4)
-console.log(maxOfArray([10, 9, 8, 100, 7, 6]) === 100)
-console.log(maxOfArray([1, 2, 'bucklemyshoe']) === null)
-console.log(maxOfArray('12345') === null)
-console.log(maxOfArray(87) === null)
-
-// console.assert(maxOfArray([2, 4, 3]) === 4)
-// console.assert(maxOfArray([10, 9, 8, 100, 7, 6]) === 100)
-// console.assert(maxOfArray([1, 2, 'bucklemyshoe']) === null)
-// console.assert(maxOfArray('12345') === null)
-// console.assert(maxOfArray(87) === null)
+console.assert(maxOfArray([2, 4, 3]) === 4)
+console.assert(maxOfArray([10, 9, 8, 100, 7, 6]) === 100)
+console.assert(maxOfArray([1, 2, 'bucklemyshoe']) === null)
+console.assert(maxOfArray('12345') === null)
+console.assert(maxOfArray(87) === null)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // PART 2
@@ -55,6 +49,16 @@ console.log(maxOfArray(87) === null)
 // and returns true if it is a vowel, false otherwise.
 
 // TODO: Your function goes here.
+
+function isVowel (char) {
+  if (typeof char !== 'string') return false
+  var letter = char.toLowerCase()
+  var vowels = 'aeiou'.split('')
+  var arr = vowels.filter(function (item) {
+    return item === letter
+  })
+  return arr[0] === letter
+}
 
 console.assert(isVowel(0) === false)
 console.assert(isVowel('B') === false)
